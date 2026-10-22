@@ -29,7 +29,7 @@ python3 main.py
 ruff format .
 ruff check .
 pytest -v 
-There were a total of 20 tests written to verify the business tules
+There were a total of 20 tests written to verify the business rules
 
 ## Files in This Repository
 
