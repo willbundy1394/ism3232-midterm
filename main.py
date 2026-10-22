@@ -2,11 +2,11 @@
 
 from business_rules import (
     calculate_quote,
-    needs_pickup_inspection,
-    total_quoted,
-    largest_rental,
     format_rental_line,
+    largest_rental,
+    needs_pickup_inspection,
     required_deposit,
+    total_quoted,
 )
 
 rentals = [
@@ -26,16 +26,18 @@ deposit_count = 0
 inspection_count = 0
 
 for rental in rentals:
-    quote = calculate_quote(rental['daily_rate'], rental['days'], rental.get('contractor', False))
+    quote = calculate_quote(
+        rental["daily_rate"], rental["days"], rental.get("contractor", False)
+    )
     deposit = required_deposit(quote)
-    inspection = needs_pickup_inspection(rental['days'], quote)
+    inspection = needs_pickup_inspection(rental["days"], quote)
 
     if deposit:
         deposit_count += 1
     if inspection:
-        inspection_count += 1  
+        inspection_count += 1
 
-    print(format_rental_line(rental['customer'], quote, deposit, inspection))
+    print(format_rental_line(rental["customer"], quote, deposit, inspection))
 
     total = total_quoted(rentals)
     count = len(rentals)
@@ -48,10 +50,3 @@ print(f"Average Quote: ${average:.2f}")
 print(f"Largest Quote: {largest}")
 print(f"Deposits Required: {deposit_count}")
 print(f"Inspections Required: {inspection_count}")
-
-
-
-
-
-
-
