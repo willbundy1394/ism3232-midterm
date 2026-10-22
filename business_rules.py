@@ -67,7 +67,7 @@ def largest_rental(rentals: list) -> str:
         quote = calculate_quote(rental['daily_rate'], rental['days'], rental.get('contractor', False))
         if quote > largest_quote:
             largest_quote = quote
-            largest_rental_name = rental['name']   
+            largest_rental_name = rental['customer']   
     return largest_rental_name
 
 def format_rental_line(customer: str, quote: float, deposit: bool, inspection: bool) -> str:
