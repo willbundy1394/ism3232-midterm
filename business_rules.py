@@ -42,6 +42,10 @@ def calculate_quote(daily_rate: float, days: int, contractor: bool = False) -> f
     total_quote = discounted_cost + waiver_fee
     return total_quote
 
+def required_deposit(quote: float) -> bool:
+    """Returns True if the quote requires a deposit, False otherwise"""
+    return quote > DEPOSIT_LIMIT
+
 def needs_pickup_inspection(days: int, quote: float) -> bool:
     """Returns True if the rental needs a pickup inspection, False otherwise"""
     return days >= PICKUP_INSPECTION_DAYS_LIMIT and quote > PICKUP_INSPECTION_QUOTE_LIMIT
