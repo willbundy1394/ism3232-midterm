@@ -33,7 +33,7 @@ def get_rental_discount(days: int, contractor: bool = False) -> float:
 
 
 def calculate_quote(daily_rate: float, days: int, contractor: bool = False) -> float:
-    """Returns the quote for one rental: the discounted cost, plusg waiver fee if applicable. It must call your first 2 functions"""
+    """Returns the quote for one rental: the discounted cost, plus waiver fee if applicable. It must call the first 2 functions"""
     rental_cost = calculate_rental_cost(daily_rate, days)
     discount_rate = get_rental_discount(days, contractor)
     discounted_cost = rental_cost * (1 - discount_rate)
